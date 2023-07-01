@@ -1,0 +1,32 @@
+https://www.interviewbit.com/problems/palindromic-binary-representation/
+
+public class Solution {
+    public int solve(int A) {
+        int count = 0;
+        int num = 1;
+
+        while (count < A) {
+            if (isPalindromicBinary(num)) {
+                count++;
+                if (count == A) {
+                    return num;
+                }
+            }
+            num += 2;
+        }
+
+        return -1; 
+    }
+
+    boolean isPalindromicBinary(int num) {
+        int original = num;
+        int reversed = 0;
+
+        while (num > 0) {
+            reversed = (reversed << 1) | (num & 1);
+            num >>= 1;
+        }
+
+        return original == reversed;
+    }
+}
