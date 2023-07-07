@@ -1,0 +1,28 @@
+https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/description/
+
+class Solution {
+    public int[] kWeakestRows(int[][] mat, int k) {
+        int[] arr=new int[mat.length];
+         int[] res=new int[k];
+        int c=0;
+        for(int i=0;i<mat.length;i++)
+        {
+            c=0;
+            for(int j=0;j<mat[i].length;j++)
+            {
+                if(mat[i][j]==1)
+                {
+                    c++;
+                }
+            }
+            arr[i]=c*100+i;
+        }
+        Arrays.sort(arr);
+      for(int i=0;i<k;i++)
+      {
+          res[i]=arr[i]%100;
+      }
+        return res;
+        
+    }
+}
