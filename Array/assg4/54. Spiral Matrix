@@ -1,0 +1,44 @@
+https://leetcode.com/problems/spiral-matrix/description/
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> list=new ArrayList<>();
+        int endrow=matrix.length-1;  int endcol=matrix[0].length-1;
+        int startrow=0,startcol=0;
+        int c=0,total=matrix.length*matrix[0].length;
+        
+
+        while(c<total){
+        // Topleft to Topright
+        for(int i=startcol;i<=endcol && c<total;i++)
+        {
+            list.add(matrix[startrow][i]);
+            c++;
+        }
+        startrow++;
+        //Topright t0 Bottomright
+         for(int i=startrow;i<=endrow && c<total;i++)
+        {
+            list.add(matrix[i][endcol]);            c++;
+
+        }
+        endcol--;
+        // Bottom right to Bottom left
+         for(int i=endcol;i>=startcol && c<total;i--)
+        {
+            list.add(matrix[endrow][i]);            c++;
+
+        }
+        endrow--;
+        // Bottom left to Top left
+        for(int i=endrow;i>=startrow && c<total;i--)
+        {
+            list.add(matrix[i][startcol]);            c++;
+
+        }
+        startcol++;
+        }
+       
+        return list;
+    }
+}
