@@ -1,0 +1,32 @@
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+    ListNode start=head;
+     ListNode t1=new ListNode();
+        int c=0;
+        while(start!=null)
+        {
+            c++;
+            start=start.next;
+        }
+        start=head;
+         if(n==c)
+        {
+            head=head.next;
+         }
+       int k=c-n;
+       int i=1;
+       while(i<k+1)
+       {
+           if(i==k)
+           {
+               t1=start;
+           }
+           start=start.next;
+           i++;
+       }
+      t1.next=start.next;
+      return head;
+    }
+}
