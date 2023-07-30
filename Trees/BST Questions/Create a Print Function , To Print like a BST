@@ -1,1 +1,51 @@
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
 
+    TreeNode(int val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class PrintBST {
+    public static void printBST(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        printBSTHelper(root, 0);
+    }
+
+    private static void printBSTHelper(TreeNode node, int level) {
+        if (node == null) {
+            return;
+        }
+
+        // Print right subtree
+        printBSTHelper(node.right, level + 1);
+
+        // Print the current node with indentation based on the level
+        for (int i = 0; i < level; i++) {
+            System.out.print("  ");
+        }
+        System.out.println(node.val);
+
+        // Print left subtree
+        printBSTHelper(node.left, level + 1);
+    }
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(8);
+        root.left.left = new TreeNode(2);
+        root.left.right = new TreeNode(4);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(9);
+
+        System.out.println("Print BST:");
+        printBST(root);
+    }
+}
